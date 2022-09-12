@@ -1,0 +1,125 @@
+﻿<Window x:Class="Passengers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"
+        Title="Passengers"
+        Height="450" 
+        Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Task 1">
+                <Grid>
+                    <telerik:RadCartesianChart x:Name="FirstChart">
+                        <telerik:RadCartesianChart.Grid>
+                            <telerik:CartesianChartGrid MajorYLineDashArray="5, 5"
+                                                        MajorLinesVisibility="Y">
+                                <telerik:CartesianChartGrid.MajorYLineStyle>
+                                    <Style TargetType="{x:Type Line}">
+                                        <Setter Property="Stroke"
+                                                Value="Gray"/>
+                                    </Style>
+                                </telerik:CartesianChartGrid.MajorYLineStyle>
+                            </telerik:CartesianChartGrid>
+                        </telerik:RadCartesianChart.Grid>
+                        <telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:LinearAxis/>
+                        </telerik:RadCartesianChart.VerticalAxis>
+                        <telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:CategoricalAxis/>
+                        </telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:BarSeries CombineMode="Stack"
+                                           x:Name="MalesBar">
+                            <telerik:BarSeries.DefaultVisualStyle>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Background"
+                                            Value="SteelBlue"/>
+                                </Style>
+                            </telerik:BarSeries.DefaultVisualStyle>
+                            <telerik:BarSeries.LegendSettings>
+                                <telerik:SeriesLegendSettings Title="Male" />
+                            </telerik:BarSeries.LegendSettings>
+                        </telerik:BarSeries>
+                        <telerik:BarSeries CombineMode="Stack"
+                                           x:Name="FemalesBar">
+                            <telerik:BarSeries.DefaultVisualStyle>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Background"
+                                            Value="Pink"/>
+                                </Style>
+                            </telerik:BarSeries.DefaultVisualStyle>
+                            <telerik:BarSeries.LegendSettings>
+                                <telerik:SeriesLegendSettings Title="Female" />
+                            </telerik:BarSeries.LegendSettings>
+                        </telerik:BarSeries>
+                    </telerik:RadCartesianChart>
+
+                    <telerik:RadLegend Items="{Binding LegendItems, ElementName=FirstChart}"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Top"
+                                       Background="White"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Task 2">
+                <Grid>
+                    <telerik:RadPieChart>
+                        <telerik:PieSeries x:Name="ClassesPie">
+                            <telerik:PieSeries.SliceStyles>
+                                <Style TargetType="{x:Type Path}">
+                                    <Setter Property="Fill"
+                                            Value="LightGray"/>
+                                </Style>
+                                <Style TargetType="{x:Type Path}">
+                                    <Setter Property="Fill" 
+                                            Value="Pink"/>
+                                </Style>
+                                <Style TargetType="{x:Type Path}">
+                                    <Setter Property="Fill"
+                                            Value="LightGreen"/>
+                                </Style>
+                            </telerik:PieSeries.SliceStyles>
+                        </telerik:PieSeries>
+                    </telerik:RadPieChart>
+
+                    <telerik:RadLegend x:Name="SecondChartLegend"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Top"
+                                       Background="White"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Task 3">
+                <Grid>
+                    <telerik:RadCartesianChart>
+                        <telerik:RadCartesianChart.Grid>
+                            <telerik:CartesianChartGrid MajorYLineDashArray="5, 5"
+                                                    MajorLinesVisibility="Y">
+                                <telerik:CartesianChartGrid.MajorYLineStyle>
+                                    <Style TargetType="{x:Type Line}">
+                                        <Setter Property="Stroke"
+                                            Value="Gray"/>
+                                    </Style>
+                                </telerik:CartesianChartGrid.MajorYLineStyle>
+                            </telerik:CartesianChartGrid>
+                        </telerik:RadCartesianChart.Grid>
+                        <telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:CategoricalAxis/>
+                        </telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:LinearAxis/>
+                        </telerik:RadCartesianChart.VerticalAxis>
+                        <telerik:BarSeries x:Name="AgesBar">
+                            <telerik:BarSeries.DefaultVisualStyle>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Background"
+                                            Value="LightGray"/>
+                                </Style>
+                            </telerik:BarSeries.DefaultVisualStyle>
+                        </telerik:BarSeries>
+                    </telerik:RadCartesianChart>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

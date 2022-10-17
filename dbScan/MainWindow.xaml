@@ -1,15 +1,17 @@
-﻿<Window x:Class="KMeans.MainWindow"
+﻿<Window x:Class="dbScan.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:custom="clr-namespace:KMeans.Custom"
         mc:Ignorable="d"
-        Title="KMeans"
+        xmlns:custom="clr-namespace:dbScan.Custom"
+        Title="dbScan"
         Height="450" 
-        Width="800">
+        Width="800"
+        SizeChanged="Window_SizeChanged">
     <custom:AlgorithmGrid x:Name="PointsGrid"
-                          MouseDown="PointsGrid_MouseDown"
                           Background="White"
-                          Loaded="PointsGrid_Loaded"/>
+                          MouseDown="PointsGrid_MouseDown"
+                          MouseUp="PointsGrid_MouseUp"
+                          MouseMove="PointsGrid_MouseMove"/>
 </Window>

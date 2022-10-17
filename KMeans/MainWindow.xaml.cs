@@ -14,12 +14,12 @@ namespace KMeans
             InitializeComponent();
         }
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void PointsGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             _algorithm?.NextStep();
         }
 
-        private void BubblesGrid_Loaded(object sender, RoutedEventArgs e)
+        private void PointsGrid_Loaded(object sender, RoutedEventArgs e)
         {
             var points = new List<Models.Point>();
             var random = new Random();
@@ -30,14 +30,14 @@ namespace KMeans
                 {
                     X = random.Next(
                         10,
-                        (int)BubblesGrid.ActualWidth - 10),
+                        (int)PointsGrid.ActualWidth - 10),
                     Y = random.Next(
                         10,
-                        (int)BubblesGrid.ActualHeight - 10)
+                        (int)PointsGrid.ActualHeight - 10)
                 });
             }
 
-            var size = new Size(BubblesGrid.ActualWidth, BubblesGrid.ActualHeight);
+            var size = new Size(PointsGrid.ActualWidth, PointsGrid.ActualHeight);
             var clustersCount = GetOptimalClustersCount(points, size);
 
             _algorithm = new Algorithm(
@@ -46,8 +46,8 @@ namespace KMeans
                 size);
             _algorithm.Draw += (Algorithm algorithm) => 
             {
-                BubblesGrid.Algorithm = algorithm;
-                BubblesGrid.InvalidateVisual();
+                PointsGrid.Algorithm = algorithm;
+                PointsGrid.InvalidateVisual();
             };
         }
 
@@ -66,7 +66,7 @@ namespace KMeans
                 sumOfDistance.Add(algorithm.SumOfDistance);
             }
 
-            var k = 0;
+            var clustersCount = 0;
             var min = double.MaxValue;
             for (var index = 2; index < sumOfDistance.Count - 1; index++)
             {
@@ -76,11 +76,11 @@ namespace KMeans
                 if (temp < min)
                 {
                     min = temp;
-                    k = index;
+                    clustersCount = index;
                 }
             }
 
-            return k;
+            return clustersCount;
         }
     }
 }

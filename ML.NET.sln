@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMeans", "KMeans\KMeans.csproj", "{008358EB-7001-4A68-928F-D1D884F6F9CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KMeans", "KMeans\KMeans.csproj", "{008358EB-7001-4A68-928F-D1D884F6F9CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbScan", "dbScan\dbScan.csproj", "{91508D97-6552-4AC6-8C32-98DE012EAC14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{008358EB-7001-4A68-928F-D1D884F6F9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{008358EB-7001-4A68-928F-D1D884F6F9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{008358EB-7001-4A68-928F-D1D884F6F9CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91508D97-6552-4AC6-8C32-98DE012EAC14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91508D97-6552-4AC6-8C32-98DE012EAC14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91508D97-6552-4AC6-8C32-98DE012EAC14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91508D97-6552-4AC6-8C32-98DE012EAC14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

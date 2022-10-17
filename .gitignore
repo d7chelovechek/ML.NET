@@ -3,3 +3,5 @@
 /.vs
 /KMeans/bin
 /KMeans/obj
+/dbScan/bin
+/dbScan/obj

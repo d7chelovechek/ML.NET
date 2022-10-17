@@ -77,9 +77,9 @@ namespace KMeans
 
                 foreach (Cluster cluster in _clusters)
                 {
-                    var distance = 
+                    var distance = Math.Sqrt(
                         Math.Pow(cluster.CentroidX - point.X, 2) +
-                        Math.Pow(cluster.CentroidY - point.Y, 2);
+                        Math.Pow(cluster.CentroidY - point.Y, 2));
 
                     if (distance < min)
                     {

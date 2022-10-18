@@ -8,6 +8,8 @@ namespace KMeans
 {
     internal class Algorithm
     {
+        public bool DrawOnlyPoints { get; set; }
+
         public List<Point> Points { get; private set; }
         public System.Windows.Size FirstSize { get; private set; }
         public double SumOfDistance { get; private set; }
@@ -53,6 +55,8 @@ namespace KMeans
 
         public void NextStep()
         {
+            DrawOnlyPoints = false;
+
             if (_flag)
             {
                 MoveCentroids();

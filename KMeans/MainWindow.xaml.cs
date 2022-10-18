@@ -44,6 +44,11 @@ namespace KMeans
                 points,
                 clustersCount,
                 size);
+
+            _algorithm.DrawOnlyPoints = true;
+            PointsGrid.Algorithm = _algorithm;
+            PointsGrid.InvalidateVisual();
+
             _algorithm.Draw += (Algorithm algorithm) => 
             {
                 PointsGrid.Algorithm = algorithm;

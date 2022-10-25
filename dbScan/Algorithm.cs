@@ -41,6 +41,8 @@ namespace dbScan
                 }
             };
 
+            var random = new Random(1337);
+
             foreach (Point point in _points)
             {
                 if (!_visitedPoints.Contains(point))
@@ -57,35 +59,15 @@ namespace dbScan
                     {
                         _currentCluster = new Cluster()
                         {
-                            Brush = GetClusterBrush(Clusters.Count)
+                            Brush = new SolidColorBrush(Color.FromRgb(
+                                (byte)random.Next(0, 255),
+                                (byte)random.Next(0, 255),
+                                (byte)random.Next(0, 255)))
                         };
 
                         UpdateCluster(point, neighbours);
                     }
                 }
-            }
-        }
-
-        private static SolidColorBrush GetClusterBrush(int currentClusterId)
-        {
-            switch (currentClusterId)
-            {
-                case 1:
-                    {
-                        return Brushes.LightGreen;
-                    }
-                case 2:
-                    {
-                        return Brushes.LightYellow;
-                    }
-                case 3:
-                    {
-                        return Brushes.IndianRed;
-                    }
-                default:
-                    {
-                        return Brushes.LightGray;
-                    }
             }
         }
 

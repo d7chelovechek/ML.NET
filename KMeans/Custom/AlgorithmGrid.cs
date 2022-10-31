@@ -20,8 +20,12 @@ namespace KMeans.Custom
             if (Algorithm is not null)
             {
                 DrawPoints(drawingContext);
-                DrawLines(drawingContext);
-                DrawCentroids(drawingContext);
+
+                if (!Algorithm.DrawOnlyPoints)
+                {
+                    DrawLines(drawingContext);
+                    DrawCentroids(drawingContext);
+                }
             }
         }
 
@@ -30,7 +34,8 @@ namespace KMeans.Custom
             foreach (Point point in Algorithm.Points)
             {
                 drawingContext.DrawEllipse(
-                    point.Cluster.Brush,
+                    Algorithm.DrawOnlyPoints ? 
+                        Brushes.LightGray : point.Cluster.Brush,
                     new Pen(Brushes.Black, 1),
                     new System.Windows.Point(
                         point.X * ActualWidth / Algorithm.FirstSize.Width, 

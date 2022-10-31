@@ -40,10 +40,18 @@ namespace KMeans
             var size = new Size(PointsGrid.ActualWidth, PointsGrid.ActualHeight);
             var clustersCount = GetOptimalClustersCount(points, size);
 
-            _algorithm = new Algorithm(
-                points,
-                clustersCount,
-                size);
+            _algorithm = 
+                new Algorithm(
+                    points,
+                    clustersCount,
+                    size)
+                {
+                    DrawOnlyPoints = true
+                };
+
+            PointsGrid.Algorithm = _algorithm;
+            PointsGrid.InvalidateVisual();
+
             _algorithm.Draw += (Algorithm algorithm) => 
             {
                 PointsGrid.Algorithm = algorithm;

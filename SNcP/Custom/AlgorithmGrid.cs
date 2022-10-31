@@ -1,4 +1,6 @@
 ﻿using SNcP.Models;
+using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -21,6 +23,7 @@ namespace SNcP.Custom
             {
                 DrawEdges(drawingContext);
                 DrawVertices(drawingContext);
+                DrawWeights(drawingContext);
             }
         }
 
@@ -59,6 +62,36 @@ namespace SNcP.Custom
                         vertex.Point.Y * ActualHeight / Algorithm.FirstSize.Height),
                     10,
                     10);
+            }
+        }
+
+        private void DrawWeights(DrawingContext drawingContext)
+        {
+            foreach (Edge edge in Algorithm.Edges)
+            {
+                var formattedText = new FormattedText(
+                    edge.Weight.ToString(),
+                    CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    new Typeface(
+                        new FontFamily("Segoe UI"),
+                        FontStyles.Normal,
+                        FontWeights.SemiBold,
+                        FontStretches.Normal),
+                    10,
+                    Brushes.Black,
+                    null,
+                    TextFormattingMode.Ideal);
+
+                drawingContext.DrawText(
+                    formattedText,
+                    new Point(
+                        (Math.Max(edge.VertexX.Point.X, edge.VertexY.Point.X) - 
+                            Math.Abs(edge.VertexX.Point.X - edge.VertexY.Point.X) / 2 -
+                            formattedText.Width / 2) * ActualWidth / Algorithm.FirstSize.Width,
+                        (Math.Max(edge.VertexX.Point.Y, edge.VertexY.Point.Y) - 
+                            Math.Abs(edge.VertexX.Point.Y - edge.VertexY.Point.Y) / 2 - 
+                            formattedText.Height / 2) * ActualHeight / Algorithm.FirstSize.Height));
             }
         }
     }

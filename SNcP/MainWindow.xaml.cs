@@ -7,7 +7,7 @@ namespace SNcP
 {
     public partial class MainWindow : Window
     {
-        private const int _vertexCount = 20;
+        private const int _vertexCount = 50;
 
         public MainWindow()
         {
@@ -24,6 +24,7 @@ namespace SNcP
                 for (var temp = 0; temp < _vertexCount; temp++)
                 {
                     if (!index.Equals(temp) && 
+                        random.Next(0, 2) is 0 &&
                         algorithm.GetEdgeById(index, temp) is null)
                     {
                         var edge = new Edge()

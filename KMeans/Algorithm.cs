@@ -22,7 +22,10 @@ namespace KMeans
             Algorithm algorithm);
         public event DrawHandler Draw;
 
-        internal Algorithm(List<Point> points, int clustersCount, System.Windows.Size size)
+        internal Algorithm(
+            List<Point> points,
+            int clustersCount,
+            System.Windows.Size size)
         {
             _clusters = new List<Cluster>();
             Points = points;

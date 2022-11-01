@@ -6,7 +6,8 @@
         {
             var symptoms = File.ReadAllLines("Files/symptom.csv").ToList();
             var diseases = File.ReadAllLines("Files/disease.csv").ToList();
-            
+
+            var symptomsNames = symptoms.Skip(1).Select(s => s.Split(';')[0]).ToList();
             var diseasesNames = symptoms[0].Split(';').Skip(1).ToList();
             var patientsCount = Convert.ToInt32(diseases[^1].Split(';')[1]);
 
@@ -40,6 +41,16 @@
 
                 probabilities.Add(result > 1 ? 1 : result < 0 ? 0 : result);
             }
+
+            Console.WriteLine();
+            for (var index = 0; index < probabilities.Count; index++)
+            {
+                if (probabilities[index] > 0)
+                {
+                    Console.WriteLine(symptomsNames[index]);
+                }
+            }
+            Console.WriteLine();
 
             var algorithm = new Algorithm();
             algorithm.Start(

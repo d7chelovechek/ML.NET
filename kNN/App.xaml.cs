@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Passengers
+namespace kNN
 {
     public partial class App : Application
     {

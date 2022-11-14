@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dbScan", "dbScan\dbScan.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SNcP", "SNcP\SNcP.csproj", "{59BCAD10-02C1-465B-B482-9E9C4B006630}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classifier", "Classifier\Classifier.csproj", "{91C26EE2-2631-4B7C-BEEA-CA74D59BB404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Classifier", "Classifier\Classifier.csproj", "{91C26EE2-2631-4B7C-BEEA-CA74D59BB404}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kNN", "kNN\kNN.csproj", "{8AF588A3-C814-468B-B40B-1BD4B3228BC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{91C26EE2-2631-4B7C-BEEA-CA74D59BB404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C26EE2-2631-4B7C-BEEA-CA74D59BB404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C26EE2-2631-4B7C-BEEA-CA74D59BB404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF588A3-C814-468B-B40B-1BD4B3228BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF588A3-C814-468B-B40B-1BD4B3228BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF588A3-C814-468B-B40B-1BD4B3228BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF588A3-C814-468B-B40B-1BD4B3228BC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

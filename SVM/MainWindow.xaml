@@ -1,0 +1,15 @@
+﻿<Window x:Class="SVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:custom="clr-namespace:SVM.Custom"
+        mc:Ignorable="d"
+        Title="SVM"
+        Height="450"
+        Width="800"
+        PreviewKeyDown="MainWindow_PreviewKeyDown">
+    <custom:AlgorithmGrid MouseDown="AlgorithmGrid_MouseDown"
+                          Background="White"
+                          x:Name="PointsGrid"/>
+</Window>

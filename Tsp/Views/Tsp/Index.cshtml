@@ -1,0 +1,115 @@
+﻿@model TspModel
+@{
+	ViewData["Title"] = "Travelling salesman problem";
+}
+
+<style>
+	html,
+	body,
+	#container {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	#reset {
+		padding: 4px 10px;
+		background: #00a81f;
+		border-radius: 4px;
+		box-shadow: 0 1px 3px 0 rgba(38, 38, 38, 0.5);
+		border: none;
+		color: #fff;
+		font-size: 13px;
+		cursor: pointer;
+	}
+
+		#reset:disabled {
+			background: #f2f2f2;
+			color: #6e6d6d;
+			cursor: default;
+		}
+</style>
+
+<div id="container"></div>
+@using (Html.BeginForm("Index", "Tsp", FormMethod.Post, new { id = "tspStart" }))
+{
+	<script src="https://mapgl.2gis.com/api/js/v1"></script>
+	<script src="https://unpkg.com/%402gis/mapgl-directions%40%5e2/dist/directions.js"></script>
+	<script>
+		const map = new mapgl.Map('container', {
+			center: [parseFloat(@Model.CenterX), parseFloat(@Model.CenterY)],
+			zoom: parseInt(@Model.Zoom),
+			key: 'bfd8bbca-8abf-11ea-b033-5fa57aae2de7',
+		});
+		const markers = [];
+		const points = JSON.parse('@Html.Raw(Model.Points)');
+
+		let drew = false;
+		const buttonText = ['Choose nine points on the map', 'Reset points'];
+		const controlsHtml = `<button id="reset" disabled>${buttonText[0]}</button> `;
+		new mapgl.Control(map, controlsHtml, {
+			position: 'topLeft',
+		});
+
+		const resetButton = document.getElementById('reset');
+
+		resetButton.addEventListener('click', function () {
+			document.getElementById("resetSubmiter").click();
+		});
+
+		map.on('click', (e) => {
+			const coords = e.lngLat;
+			if (points.length < 9) {
+				markers.push(
+					new mapgl.Marker(map, {
+						coordinates: coords,
+						icon: 'https://docs.2gis.com/img/dotMarker.svg',
+					})
+				);
+
+				points.push(coords);
+			}
+
+			if (points.length == 9) {
+				if ('@Model.ShowRoad' != 'true') {
+					document.getElementById("tspCenterX").value = map.getCenter()[0];
+					document.getElementById("tspCenterY").value = map.getCenter()[1];
+					document.getElementById("tspZoom").value = map.getZoom();
+					document.getElementById("tspShowRoad").value = "true";
+					document.getElementById("tspPoints").value = points;
+
+					document.getElementById("tspSubmiter").click();
+				}
+			}
+		});
+
+		if ('@Model.ShowRoad' == 'true') {
+			const directions = new mapgl.Directions(map, {
+				directionsApiKey: 'rurbbn3446',
+			});
+
+			directions.carRoute({
+				points: points,
+			});
+			markers.forEach((m) => {
+				m.destroy();
+			});
+
+			resetButton.disabled = false;
+			resetButton.textContent = buttonText[1];
+		}
+	</script>
+
+	@Html.HiddenFor(m => m.CenterX, new { id = "tspCenterX" });
+	@Html.HiddenFor(m => m.CenterY, new { id = "tspCenterY" });
+	@Html.HiddenFor(m => m.Zoom, new { id = "tspZoom" });
+	@Html.HiddenFor(m => m.ShowRoad, new { id = "tspShowRoad" });
+	@Html.HiddenFor(m => m.Points, new { id = "tspPoints" });
+
+	<input type="submit" id="tspSubmiter" hidden/>
+}
+@using (Html.BeginForm("Index", "Tsp", FormMethod.Get))
+{
+	<input type="submit" id="resetSubmiter" hidden />
+}
